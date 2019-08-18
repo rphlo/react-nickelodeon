@@ -1,0 +1,240 @@
+/* 2018-11-02 */
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: calc(1em + 1vw);
+    color: #f70;
+}
+.swal-overlay {
+    color: #000;
+    text-shadow: none;
+}
+.swal-button {
+    background-color:#000;
+    color:#fff;
+    border:none;
+    box-shadow:none;
+    border-radius:5px;
+    font-weight:600;
+    font-size:14px;
+    padding:10px 24px;
+    margin:0;
+    cursor:pointer
+   }
+   .swal-button:not([disabled]):hover {
+    background-color:#666
+}
+.swal-button:active {
+    background-color:#000
+}
+.swal-button:focus {
+    outline:none;
+    box-shadow: none
+ }
+.swal-button[disabled] {
+    opacity:.5;
+    cursor:default
+}
+.swal-button::-moz-focus-inner {
+    border:0
+}
+.link{
+    cursor:pointer
+}
+.bgVideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    background: url('background.jpg') no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+}
+video {
+    object-fit: contain;
+    vertical-align: baseline;
+}
+.videoCover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    background: rgba(255, 255, 255, 0.7);
+}
+.iconMenu {
+    font-size: calc(.9em + 2.1vh);
+    margin-top: 30px;
+}
+.iconMenu > link {
+    vertical-align: sub;
+}
+
+.iconMenu i {
+    padding-right: 15px;
+}
+a {
+    text-decoration: none;
+    color: #f70;
+}
+::placeholder {
+   color: #ccc;
+}
+.searchInput, .usernameInput, .passwordInput {
+    background-color: transparent;
+    color: #f70;
+    border: 0;
+    padding: 0;
+    margin: 0 0 0.5vw 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: calc(1em + 1vw);
+    border-bottom: 2px solid;
+}
+::placeholder {
+    color: #f70;
+}
+.progressbar {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:20px;
+}
+.version {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+}
+.progressbar {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 20px;
+}
+.progressbarBar {
+    height:5px;
+    background-color: #f70;
+}
+.myBtn {
+    background-color: #333;
+    border: none;
+    color: #ccc;
+    padding: 5px 15px 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    font-size: calc(.5em + 1vw);
+    font-weight: 600;
+    text-shadow: 1px 1px #000000;
+    border-radius: 5px;
+    border-width: 0 1px 1px 0;
+    border-color: #000;
+    border-style: solid;
+}
+.loginBtn {
+    margin:20px 0 0;
+}
+.cover {
+    margin-left: 10px;
+    margin-right: 5px;
+    border-radius: 50%;
+    width: 40px;
+    vertical-align: middle;
+}
+.mainCover {
+    margin-left: 10px;
+    margin-right: 5px;
+    border-radius: 50%;
+    width: calc(1em + 1vw);
+    vertical-align: sub;
+}
+.rotate {
+    animation: rotation 1.33s infinite linear;
+}
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+  
+.searchResultItem {
+    width: calc(100% - 100px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+.currentTitle {
+    width: calc(100%);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.usernameInputWrapper:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f007";
+    padding-right: 0.5vw;
+    position: relative;
+    font-size: calc(0.7em + 1vw);
+    width: 1.2em;
+    text-align: center;
+    display: inline-block;
+}
+.usernameInput {
+    position: relative;
+}
+.passwordInputWrapper:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f084";
+    padding-right: 0.5vw;
+    position: relative;
+    font-size: calc(0.7em + 1vw);
+    width: 1.2em;
+    text-align: center;
+    display: inline-block;
+}
+.passwordInput {
+    position: relative;
+}
+.searchInputWrapper:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f002";
+    padding-right: 0.5vw;
+    position: relative;
+    font-size: calc(0.7em + 1vw);
+}
+.searchInput {
+    position: relative;
+}
+
+.enabled > .fa-wifi{
+    color: #07c;
+}
+.searchResultActions {
+  position: absolute;
+  right: 0px;
+  padding-top: 5px
+}
+.searchResultActions span {
+  margin-right: 15px;
+}
