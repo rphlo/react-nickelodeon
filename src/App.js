@@ -54,17 +54,10 @@ class App extends React.PureComponent {
   componentDidMount() {
     this.addMobileListener();
     this.bindEvents(this.audio);
-    if (IS_MOBILE) {
-      this.bindMobileAutoPlayEvents();
-    }
-    if (!IS_MOBILE && isSafari()) {
-      this.bindSafariAutoPlayEvents();
-    }
     if(this.state.params.authToken) {
       this.playNext();
     }
   }
-
   unBindEvents = (...options) => {
     this.bindEvents(...options);
   };
