@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="200pc"
+   height="200pc"
+   viewBox="0 0 846.66664 846.66664"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="Humppakone Logo.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.20132326"
+     inkscape:cx="1084.7558"
+     inkscape:cy="1336.904"
+     inkscape:document-units="pt"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     units="pc"
+     showguides="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,549.66656)"
+     style="display:inline">
+    <path
+       style="fill:#ff7100;fill-opacity:1;stroke-width:0.26458332"
+       d="m 356.31894,-487.31279 c -29.89371,27.92558 -72.46458,69.12864 -111.30741,65.73242 -34.47108,-4.1376 -72.51878,-1.5517 -89.07983,-28.07684 l -1.66915,-1.54668 L 2.7746378,-284.36291 166.34088,-132.80729 256.66405,-230.28818 415.16032,-83.430487 251.54498,199.17708 C 247.77454,163.21944 208.3544,125.97989 155.1643,108.12784 89.769159,86.17981 25.931105,100.64027 12.578174,140.42614 c -6.4122671,19.10583 -0.08676,41.61605 17.584973,62.57861 17.671735,20.9626 45.242112,38.66039 76.645963,49.20009 57.97312,19.41039 136.9844,-21.23021 136.9844,-21.23021 l -0.1359,0.72347 c 126.3618,-212.086221 362.8445,-610.84644 362.8445,-610.84644 0,0 88.50927,5.85199 112.69597,33.62275 24.5895,49.1792 64.06999,19.97105 96.78426,23.86521 -30.26799,-17.52135 -51.90392,-43.04759 -65.7412,-89.47877 -13.00901,-41.35446 -62.7933,-48.9712 -106.17335,-49.04042 -3.67628,-0.006 -7.30644,0.0426 -10.86445,0.12919 L 462.65096,-165.4601 319.49794,-298.10161 428.58946,-418.77899 Z m 459.6634,165.65241 c 0.78992,0.45725 1.58425,0.91046 2.38591,1.35703 -0.79277,-0.47208 -1.58853,-0.92133 -2.38591,-1.35703 z M 485.64336,-144.15649 436.9931,-63.20071 742.35534,219.73862 818.27937,137.79737 655.958,-8.8050495 c -11.91731,0.098081 -24.51869,-1.8572165 -41.03933,-15.5690885 z"
+       id="path3713"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccccccccsccccccccccccccccccccccc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 277.74757,76.898251 Z"
+       id="path3717"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 251.54498,199.17708 Z"
+       id="path3719"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
