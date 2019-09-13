@@ -601,7 +601,7 @@ class App extends React.PureComponent {
             <span
               onClick={this.onYoutubeDlPrompt} 
               title="Import From Youtube"
-              className="link">
+              className="link youtube">
               <i className="fab fa-fw fa-youtube"></i>
             </span>
             <span

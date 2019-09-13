@@ -44,6 +44,9 @@ body {
 .link{
     cursor:pointer
 }
+.youtube i {
+  color: #ff0000;  
+}
 .bgVideo {
     position: fixed;
     top: 50%;
