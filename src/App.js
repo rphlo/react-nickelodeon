@@ -639,9 +639,9 @@ class App extends React.PureComponent {
                 <SearchResultItem
                   key={audio.id}
                   audio={audio}
-                  onRandomAudioLoaded={this.onRandomAudioLoaded}
-                  deleteAudio={this.deleteAudio}
-                  editAudioFilename={this.editAudioFilename} />)
+                  onRandomAudioLoaded={this.onRandomAudioLoaded.bind(this)}
+                  deleteAudio={this.deleteAudio.bind(this)}
+                  editAudioFilename={this.editAudioFilename.bind(this)} />)
               )
             }
           </div>
