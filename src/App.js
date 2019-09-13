@@ -1,13 +1,11 @@
 import React from "react";
 import swal from "sweetalert";
 import $ from "jquery";
-import isMobile from "is-mobile";
-import { isSafari, printTime } from "./utils";
+import { printTime } from "./utils";
+import SearchResultItem from "./components/searchResultItem";
 import "./App.css";
 
 const pkg = require('../package.json');
-
-const IS_MOBILE = isMobile();
 
 const options = {
   //audio lists model
@@ -406,17 +404,20 @@ class App extends React.PureComponent {
 
     loadAudio(this.getAudioSrc());
   };
-  onSearchInputChange = (e) => {
-    const query = e.target.value;
-    if (this.state.searchTimeout) {
-      clearTimeout(this.state.searchTimeout);
+  searchInputKeyPress = (e) => {
+    if (e.which === 13) {
+      const query = e.target.value;
+      console.log('Searching', query);
+      if (this.state.searchTimeout) {
+        clearTimeout(this.state.searchTimeout);
+      }
+      const searchTimeout = setTimeout(
+        () => this.searchSongs(query),
+        0,
+      );
+      this.setState({searchTimeout});
     }
-    const searchTimeout = setTimeout(
-      () => this.searchSongs(query),
-      500
-    );
-    this.setState({searchTimeout});
-  };
+  }
   searchSongs = function(query) {
     if (this.state.xhrSearch) {
       this.state.xhrSearch.abort();
@@ -431,7 +432,7 @@ class App extends React.PureComponent {
       }
     }).done(songs => {
         this.setState({xhrSearch: null});
-        console.log('Found ' + songs.length + ' match');
+        console.log('Found ' + songs.length + ' match for query "' + query + '"');
         this.setState({searchResults: songs});
     }).fail(e => {
         if (e.status === 401) {
@@ -627,7 +628,7 @@ class App extends React.PureComponent {
           <div className="queuedSongs">-</div>
           */}
           <p className="searchInputWrapper">
-            <input type="text" onKeyUp={this.onSearchInputChange} className="searchInput" placeholder="Search"/>
+            <input type="search" onKeyPress={this.searchInputKeyPress} className="searchInput" placeholder="Search"/>
           </p>
           <div className="searchResults">
             { xhrSearch &&
@@ -635,35 +636,12 @@ class App extends React.PureComponent {
             }
             { !xhrSearch &&
               searchResults.map(audio => (
-                <div className="searchResultItem" key={audio.id}>
-                  <span
-                    className="link"
-                    title={audio.filename}
-                    onClick={()=>this.onRandomAudioLoaded(audio)}
-                    >
-                    <img
-                      className="cover"
-                      src={audio.download_url + '.jpg?auth_token=' + authToken}
-                      alt=""
-                    />
-                    { audio.filename.split('/').pop() }
-                  </span>
-                  <span className="searchResultActions">
-                  <span
-                      className="link"
-                      onClick={()=>this.editAudioFilename(audio)}
-                    >
-                      <i className="fas fa-edit"></i>
-                    </span>
-                    <span
-                      className="link"
-                      onClick={()=>this.deleteAudio(audio)}
-                    >
-                      <i className="fas fa-trash"></i>
-                    </span>
-                  </span>
-                </div>
-              )
+                <SearchResultItem
+                  key={audio.id}
+                  audio={audio}
+                  onRandomAudioLoaded={this.onRandomAudioLoaded}
+                  deleteAudio={this.deleteAudio}
+                  editAudioFilename={this.editAudioFilename} />)
               )
             }
           </div>
