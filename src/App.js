@@ -14,7 +14,6 @@ const options = {
 };
 
 class App extends React.PureComponent {
-  
   NETWORK_STATE = {
     NETWORK_EMPTY: 0,
     NETWORK_IDLE: 1,
@@ -25,6 +24,7 @@ class App extends React.PureComponent {
   state = {
     params: options,
     currentAudio: {},
+    queue: [],
     xhrRand: [],
     attemptingLogin: false,
     currentTime: 0,
@@ -121,12 +121,17 @@ class App extends React.PureComponent {
       fetchingNext: true,
     });
   };
+  onQueueAudio = (audio) => {
+    const newQueue = this.state.queue.filter(()=>true);
+    newQueue.push(audio);
+    this.setState({queue: newQueue});
+  };
   onfetchingError = (e) => {
     this.setState({
       fetchingNext: false
     });
     this.onAjaxFail(e);
-  }
+  };
   clearAuthToken = () => {
     const data = {
       ...this.state.params,
@@ -226,6 +231,13 @@ class App extends React.PureComponent {
       playId: '',
       currentAudio: {}
     });
+    if (this.state.queue.length > 0) {
+      const newQueue = this.state.queue.filter(() => true);
+      const nextAudio = newQueue.shift();
+      this.setState({queue: newQueue});
+      this.onRandomAudioLoaded(nextAudio);
+      return
+    }
     if (!this.state.fetchingNext) {
       this.fetchRandomAudio(true)
       console.log('FETCH!!!')
@@ -532,7 +544,8 @@ class App extends React.PureComponent {
       attemptingLogin,
       pause,
       searchResults,
-      xhrSearch
+      xhrSearch,
+      queue
     } = this.state;
 
     return (
@@ -639,6 +652,8 @@ class App extends React.PureComponent {
                 <SearchResultItem
                   key={audio.id}
                   audio={audio}
+                  queue={queue}
+                  onQueueAudio={this.onQueueAudio}
                   onRandomAudioLoaded={this.onRandomAudioLoaded.bind(this)}
                   deleteAudio={this.deleteAudio.bind(this)}
                   editAudioFilename={this.editAudioFilename.bind(this)} />)
