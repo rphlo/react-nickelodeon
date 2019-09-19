@@ -268,3 +268,7 @@ a {
     margin-left: -20px;
     border-radius: 50%;
 }
+
+.searchForm {
+    display: inline-block;
+}
