@@ -428,7 +428,12 @@ class App extends React.PureComponent {
         0,
       );
       this.setState({searchTimeout});
+      e.target.blur()
     }
+  }
+  onSubmitSearchForm = (e) => {
+    e.preventDefault();
+    $(e.target).find('.searchInput').trigger('keypress');
   }
   searchSongs = function(query) {
     if (this.state.xhrSearch) {
@@ -637,11 +642,8 @@ class App extends React.PureComponent {
           </div>
           <div className="currentTitle">Now Playing: <span id="currentTitle">{this.getAudioTitle() || '-'}</span></div>
           
-          {/*<div>Queue</div>
-          <div className="queuedSongs">-</div>
-          */}
           <p className="searchInputWrapper">
-            <input type="search" onKeyPress={this.searchInputKeyPress} className="searchInput" placeholder="Search"/>
+            <form className="searchForm" onSubmit={this.onSubmitSearchForm}><input type="search" onKeyPress={this.searchInputKeyPress} className="searchInput" placeholder="Search"/></form>
           </p>
           <div className="searchResults">
             { xhrSearch &&
