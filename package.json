@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://www.humppakone.com",
   "api_homepage": "https://api.humppakone.com",
+  "contact_email": "info@humppakone.com",
   "dependencies": {
     "gh-pages": "^2.1.1",
     "is-mobile": "^2.1.0",

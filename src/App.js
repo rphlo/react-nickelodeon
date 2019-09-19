@@ -594,6 +594,8 @@ class App extends React.PureComponent {
               </button>
             </div>
           </form>
+          <p><small>This app offers its users the pleasure to listen to their favourite songs in a good old stereo fashion.<br/>No surround sound bullshit here, Good old MPEG-1 standard only.</small></p>
+          <p><small>Contact: <a href={'mailto:' + pkg.contact_email}>{pkg.contact_email}</a></small></p>
         </div>}
         { authToken && <div className="jukebox">
           <div className="iconMenu">
