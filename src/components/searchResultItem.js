@@ -19,7 +19,7 @@ export default class SearchResultItem extends React.PureComponent {
         { (queueIndex !== -1) && 
           (<div class="queueNumber">{(queueIndex+1).toString()}</div>)}
       </span>
-      <span className="link" onClick={()=>this.props.onRandomAudioLoaded(audio)}>{ audio.filename.split('/').pop() }</span>
+      <span className="link" title={audio.filename} onClick={()=>this.props.onRandomAudioLoaded(audio)}>{ audio.filename.split('/').pop() }</span>
       <span className="searchResultActions">
         <span
           className="link"
