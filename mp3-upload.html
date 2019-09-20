@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>MP3 upload</h1>
+        <form method="post" action="">
+            <fieldset>
+                <input type="file" multiple="true" accept=".mp3,audio/mpeg" id="filePicker">
+            </fieldset>
+        </form>
+        <pre id="progressDiv">
+        </pre>
+        <script type="text/javascript" src="/resumable.js"></script>
+        <script type="text/javascript">
+
+function displayProgress(progress) {
+    var txt = '';
+    progress.forEach(
+        function(f){
+            txt += Math.round(f.progress() * 100) + '% - ' + f.fileName + '\n';
+        }
+    );
+    document.getElementById('progressDiv').innerHTML = txt;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    var authToken = localStorage.getItem('auth_token');
+    var filesUploaded = [];
+    if(!authToken) {
+        alert('You are not logged in! Go to https://www.humppakone.com/');
+        window.location = 'https://www.humppakone.com/';
+    }
+    var r = new Resumable({
+        target: 'https://api.humppakone.com/mp3-upload',
+        headers: {
+            Authorization: 'Token ' + authToken
+        }
+    });
+    if (!r.support) {
+        alert('Upgrade to modern browser')
+    }
+    r.assignBrowse(document.getElementById('filePicker'));
+    r.on('fileAdded', function(file){
+        file.upload()
+        filesUploaded.push(file)
+    })
+    r.on('progress', function(file){
+        displayProgress(filesUploaded);
+    })
+    r.on('fileSuccess', function(file){
+    })
+});
+        </script>
+    </body>
+</html>
