@@ -4,7 +4,7 @@
         <h1>MP3 upload</h1>
         <form method="post" action="">
             <fieldset>
-                <input type="file" multiple="true" accept=".mp3,audio/mpeg" id="filePicker">
+                <input type="file" multiple="true" accept=".mp3" id="filePicker">
             </fieldset>
         </form>
         <pre id="progressDiv">
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     var r = new Resumable({
         target: 'https://api.humppakone.com/mp3-upload',
+        fileType: ['mp3']
         headers: {
             Authorization: 'Token ' + authToken
         }
