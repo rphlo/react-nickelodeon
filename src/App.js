@@ -534,6 +534,13 @@ class App extends React.PureComponent {
       this.downloadNode.click();
     }
   };
+  onMP3Upload = () => {
+    const newWindow = window.open('/mp3-upload.html', 'upload', 'height=480,width=640');
+    if (window.focus) {
+       newWindow.focus()
+    }
+    return false;
+  };
   onClickProgressBar = e => {
     var perc = e.pageX/$(this.progressBar).width();
     if (this.audio) {
@@ -634,6 +641,12 @@ class App extends React.PureComponent {
               >
                 <i className="fas fa-fw fa-cloud-download-alt"></i>
               </a>
+            </span>
+            <span
+              onClick={() => this.onMP3Upload(currentAudio)} 
+              title="MP3 Upload"
+              className="link">
+             <i className="fas fa-fw fa-upload"></i>
             </span>
             <span
               onClick={this.onLogout}
