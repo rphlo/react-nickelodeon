@@ -11,6 +11,7 @@ const options = {
   //audio lists model
   apiRoot: localStorage.devserver || pkg.api_homepage,
   authToken: localStorage.getItem('auth_token'),
+  username: localStorage.getItem('username'),
 };
 
 class App extends React.PureComponent {
@@ -86,13 +87,15 @@ class App extends React.PureComponent {
   onLoginSuccess = (response) => {
     const data = {
       ...this.state.params,
-      authToken: response.token
+      authToken: response.token,
+      username: response.user.username
     }
     this.setState({
       params: data,
       attemptingLogin: false
     });
     localStorage.setItem('auth_token', response.token);
+    localStorage.setItem('username', response.user.username);
     console.log('Login successful');
     this.playNext();
   }
@@ -551,7 +554,7 @@ class App extends React.PureComponent {
   };
   render() {
     const { 
-      params: { authToken },
+      params: { authToken, username},
       currentAudio,
       attemptingLogin,
       pause,
@@ -669,6 +672,7 @@ class App extends React.PureComponent {
                 <SearchResultItem
                   key={audio.id}
                   audio={audio}
+                  username={username}
                   queue={queue}
                   onQueueAudio={this.onQueueAudio}
                   onRandomAudioLoaded={this.onRandomAudioLoaded.bind(this)}
