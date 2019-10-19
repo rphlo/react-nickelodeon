@@ -570,10 +570,10 @@ class App extends React.PureComponent {
           className="progressbar"
           onClick={this.onClickProgressBar}
           ref={node => (this.progressBar = node)}
+          title={this.getProgressText()}
           >
           <div
            className="progressbarBar"
-           title={this.getProgressText()}
            style={{width: (this.getProgressPercentage() + '%')}}
           ></div>
         </div>}
@@ -658,7 +658,7 @@ class App extends React.PureComponent {
                 <i className="fas fa-fw fa-sign-out-alt"></i>
             </span>
           </div>
-          <div className="currentTitle">Now Playing: <span id="currentTitle">{this.getAudioTitle() || '-'}</span></div>
+          <div className="currentTitle">Now Playing: <span id="currentTitle" title={currentAudio.filename}>{this.getAudioTitle() || '-'}</span></div>
           
           <p className="searchInputWrapper">
             <form className="searchForm" onSubmit={this.onSubmitSearchForm}><input type="search" onKeyPress={this.searchInputKeyPress} className="searchInput" placeholder="Search"/></form>
