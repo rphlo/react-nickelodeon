@@ -29,8 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
         alert('You are not logged in! Go to https://www.humppakone.com/');
         window.location = 'https://www.humppakone.com/';
     }
+    var serverUrl = window.localStorage.devserver || 'https://api.humppakone.com'
     var r = new Resumable({
-        target: 'https://api.humppakone.com/mp3-upload',
+        target: serverUrl + '/mp3-upload',
         fileType: ['mp3'],
         headers: {
             Authorization: 'Token ' + authToken
