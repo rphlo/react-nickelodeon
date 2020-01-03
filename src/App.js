@@ -3,7 +3,6 @@ import swal from "sweetalert";
 import $ from "jquery";
 import { printTime } from "./utils";
 import SearchResultItem from "./components/searchResultItem";
-import "./App.css";
 
 const pkg = require('../package.json');
 
