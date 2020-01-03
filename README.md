@@ -1,3 +1,9 @@
+# React Nickelodeon
+
+A frontend for django nickelodeon API available at https://api.humppakone.com
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
