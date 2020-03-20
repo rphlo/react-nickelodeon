@@ -1,11 +1,12 @@
 {
   "name": "react-nickelodeon",
-  "version": "2020010301",
+  "version": "2020032001",
   "private": true,
   "homepage": "https://www.humppakone.com",
   "api_homepage": "https://api.humppakone.com",
   "contact_email": "info@humppakone.com",
   "dependencies": {
+    "@sentry/browser": "^5.14.2",
     "gh-pages": "^2.1.1",
     "is-mobile": "^2.1.0",
     "jquery": "^3.4.1",

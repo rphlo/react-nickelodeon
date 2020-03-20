@@ -43,6 +43,9 @@ class App extends React.PureComponent {
     console.log(this.state.params.authToken)
   }
 
+  
+  
+
   componentWillUnmount() {
     this.unBindEvents(this.audio, undefined, false);
     this.media.removeListener(this.listenerIsMobile);
@@ -226,6 +229,28 @@ class App extends React.PureComponent {
       fetchingNext: false,
       currentAudio: audioInfo,
     });
+
+    if ('mediaSession' in navigator) {
+      /*eslint-disable no-undef*/
+      const filename = audioInfo.filename
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: filename.split('/').pop(),
+        artwork: [
+          { src: audioInfo.download_url + '.jpg?auth_token=' + this.state.params.authToken, sizes: '500x500', type: 'image/jpg' },
+        ]
+      });
+      /*eslint-enable no-undef*/
+
+      navigator.mediaSession.setActionHandler('play', ()=>{
+        this.setState({ pause: false, playing: true });
+        this.audio.play();
+      });
+      navigator.mediaSession.setActionHandler('pause', ()=>{
+        this.setState({ pause: true, playing: true });
+        this.audio.pause();
+      });
+      navigator.mediaSession.setActionHandler('nexttrack', this.playNext);
+    }
   }
   playNext = () => {
     console.log('NEXT!!!')
@@ -340,7 +365,8 @@ class App extends React.PureComponent {
     bind = true
   ) => {
     const { once } = this.props;
-    for (let name in eventsNames) {
+    let name;
+    for (name in eventsNames) {
       const _events = eventsNames[name];
       bind
         ? target.addEventListener(name, _events, {
