@@ -3,6 +3,7 @@ import swal from "sweetalert";
 import $ from "jquery";
 import { printTime } from "./utils";
 import SearchResultItem from "./components/searchResultItem";
+import QueueItem from "./components/queueItem";
 
 const pkg = require('../package.json');
 
@@ -36,15 +37,13 @@ class App extends React.PureComponent {
     searchResults: [],
     searchTimeout: null,
     xhrSearch: null,
+    viewQueue: false,
   };
 
   constructor() {
     super();
     console.log(this.state.params.authToken)
   }
-
-  
-  
 
   componentWillUnmount() {
     this.unBindEvents(this.audio, undefined, false);
@@ -464,6 +463,7 @@ class App extends React.PureComponent {
     $(e.target).find('.searchInput').trigger('keypress');
   }
   searchSongs = function(query) {
+    this.setState({viewQueue: false});
     if (this.state.xhrSearch) {
       this.state.xhrSearch.abort();
     }
@@ -577,6 +577,9 @@ class App extends React.PureComponent {
       this.audio.currentTime = target;
     }
   };
+  displayQueue = e => {
+    this.setState({viewQueue: true});
+  }
   render() {
     const { 
       params: { authToken, username},
@@ -585,7 +588,8 @@ class App extends React.PureComponent {
       pause,
       searchResults,
       xhrSearch,
-      queue
+      queue,
+      viewQueue,
     } = this.state;
 
     return (
@@ -686,9 +690,25 @@ class App extends React.PureComponent {
           <div className="currentTitle">Now Playing: <span id="currentTitle" title={currentAudio.filename}>{this.getAudioTitle() || '-'}</span></div>
           
           <p className="searchInputWrapper">
-            <form className="searchForm" onSubmit={this.onSubmitSearchForm}><input type="search" onKeyPress={this.searchInputKeyPress} className="searchInput" placeholder="Search"/></form>
+            <form className="searchForm" onSubmit={this.onSubmitSearchForm}>
+              <input type="search" onKeyPress={this.searchInputKeyPress} className="searchInput" placeholder="Search"/>
+              <span onClick={this.displayQueue} className="link"><i className="fas fa-layer-group"></i></span></form>
           </p>
-          <div className="searchResults">
+          { viewQueue ? 
+          (
+            <div className="queueList">
+              { queue.map((audio, idx) => (<QueueItem
+                  key={audio.id}
+                  audio={audio}
+                  username={username}
+                  queueIndex={idx}
+                  onQueueAudio={this.onQueueAudio}
+                  onRandomAudioLoaded={this.onRandomAudioLoaded.bind(this)}
+                  deleteAudio={this.deleteAudio.bind(this)}
+                  editAudioFilename={this.editAudioFilename.bind(this)} />)) }
+            </div>
+          )
+          : (<div className="searchResults">
             { xhrSearch &&
               <i className="fas fa-spin fa-2x fa-compact-disc"></i>
             }
@@ -705,7 +725,8 @@ class App extends React.PureComponent {
                   editAudioFilename={this.editAudioFilename.bind(this)} />)
               )
             }
-          </div>
+          </div>)
+          }
         </div>
         }
         <div className="version">

@@ -185,6 +185,13 @@ a {
     text-overflow: ellipsis;
     margin-bottom: 5px;
 }
+.queueItem {
+    width: calc(100% - 100px);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
 .currentTitle {
     width: calc(100%);
     overflow: hidden;
