@@ -6,7 +6,7 @@ html {
 body {
     font-family: 'Source Sans Pro', sans-serif;
     font-size: calc(1em + 1vw);
-    color: #f70;
+    color: #333;
 }
 .swal-overlay {
     color: #000;
@@ -75,7 +75,7 @@ video {
     width: auto;
     height: auto;
     z-index: -100;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.6);
 }
 .iconMenu {
     font-size: calc(.9em + 2.1vh);
@@ -90,14 +90,14 @@ video {
 }
 a {
     text-decoration: none;
-    color: #f70;
+    color: #333;
 }
 ::placeholder {
    color: #ccc;
 }
 .searchInput, .usernameInput, .passwordInput {
     background-color: transparent;
-    color: #f70;
+    color: #333;
     border: 0;
     padding: 0;
     margin: 0 0 0.5vw 0;
@@ -106,7 +106,7 @@ a {
     border-bottom: 2px solid;
 }
 ::placeholder {
-    color: #f70;
+    color: #333;
 }
 .progressbar {
     position: absolute;
@@ -130,7 +130,7 @@ a {
 }
 .progressbarBar {
     height:5px;
-    background-color: #f70;
+    background-color: #333;
 }
 .myBtn {
     background-color: #333;
@@ -237,10 +237,6 @@ a {
 .searchInput {
     position: relative;
 }
-
-.enabled > .fa-wifi{
-    color: #07c;
-}
 .searchResultActions {
   position: absolute;
   right: 0px;
@@ -262,14 +258,14 @@ a {
 ::-webkit-search-cancel-button{
     position:relative;
     right: calc(0.5em);
-    color: #f90;
+    color: #555;
 }
 
 .queueNumber {
     position: relative;
     font-size: 15px;
     color: #fff;
-    background-color: #ff9900;
+    background-color: #333;
     display: inline-block;
     padding: 5px 10px;
     text-align: center;
