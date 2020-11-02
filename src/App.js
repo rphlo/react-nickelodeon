@@ -1,6 +1,7 @@
 import React from "react";
 import swal from "sweetalert";
 import $ from "jquery";
+import useNoSleep from "use-no-sleep";
 import { printTime } from "./utils";
 import SearchResultItem from "./components/searchResultItem";
 import QueueItem from "./components/queueItem";
@@ -47,12 +48,9 @@ class App extends React.PureComponent {
 
   componentWillUnmount() {
     this.unBindEvents(this.audio, undefined, false);
-    this.media.removeListener(this.listenerIsMobile);
-    this.media = undefined;
   }
   
   componentDidMount() {
-    this.addMobileListener();
     this.bindEvents(this.audio);
     if(this.state.params.authToken) {
       this.playNext();
@@ -79,12 +77,7 @@ class App extends React.PureComponent {
     .fail(this.onLoginFail);
     this.setState({attemptingLogin: true})
   };
-  addMobileListener = () => {
-    this.media = window.matchMedia(
-      "(max-width: 768px) and (orientation : portrait)"
-    );
-    this.media.addListener(this.listenerIsMobile);
-  };
+
   onLoginSuccess = (response) => {
     const data = {
       ...this.state.params,
@@ -243,10 +236,12 @@ class App extends React.PureComponent {
       navigator.mediaSession.setActionHandler('play', ()=>{
         this.setState({ pause: false, playing: true });
         this.audio.play();
+        this.props.ontogglePause(false);
       });
       navigator.mediaSession.setActionHandler('pause', ()=>{
         this.setState({ pause: true, playing: true });
         this.audio.pause();
+        this.props.ontogglePause(true);
       });
       navigator.mediaSession.setActionHandler('nexttrack', this.playNext);
     }
@@ -420,6 +415,7 @@ class App extends React.PureComponent {
       } else {
         this.audio.pause();
       }
+      this.props.onTogglePause(pause)
       return 
     }
 
@@ -744,4 +740,15 @@ class App extends React.PureComponent {
   }
 }
 
-export default App;
+
+function MyApp() {
+  const [playing, setPlaying] = React.useState(false);
+  useNoSleep(playing);
+
+  return (
+    <App onTogglePause={(paused) => setPlaying(!paused)}/>
+  );
+};
+
+
+export default MyApp;

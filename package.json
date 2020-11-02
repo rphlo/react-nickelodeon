@@ -1,6 +1,6 @@
 {
   "name": "react-nickelodeon",
-  "version": "2020100300",
+  "version": "2020110200",
   "private": true,
   "homepage": "https://www.humppakone.com",
   "api_homepage": "https://api.humppakone.com",
@@ -14,7 +14,8 @@
     "react-dom": "^16.9.0",
     "react-icons": "^3.7.0",
     "react-scripts": "3.1.1",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "use-no-sleep": "^0.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
