@@ -236,12 +236,12 @@ class App extends React.PureComponent {
       navigator.mediaSession.setActionHandler('play', ()=>{
         this.setState({ pause: false, playing: true });
         this.audio.play();
-        this.props.ontogglePause(false);
+        this.props.onTogglePause(false);
       });
       navigator.mediaSession.setActionHandler('pause', ()=>{
         this.setState({ pause: true, playing: true });
         this.audio.pause();
-        this.props.ontogglePause(true);
+        this.props.onTogglePause(true);
       });
       navigator.mediaSession.setActionHandler('nexttrack', this.playNext);
     }
