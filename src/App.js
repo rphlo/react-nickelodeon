@@ -415,7 +415,7 @@ class App extends React.PureComponent {
       } else {
         this.audio.pause();
       }
-      this.props.onTogglePause(pause)
+      this.props.onTogglePause(!pause)
       return 
     }
 
