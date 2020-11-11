@@ -314,6 +314,7 @@ class App extends React.PureComponent {
             //this.audio.play();
           }
           this.setState({ firstPlay: false });
+          this.props.onTogglePause(firstPlay);
         }
       );
     } else {
@@ -746,7 +747,7 @@ function MyApp() {
   useNoSleep(playing);
 
   return (
-    <App onTogglePause={(paused) => setPlaying(!paused)}/>
+    <App onTogglePause={(paused) => {console.log('noSleep ' + (!paused ? 'on' : 'off'));setPlaying(!paused)}}/>
   );
 };
 
