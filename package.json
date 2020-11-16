@@ -6,7 +6,8 @@
   "api_homepage": "https://api.humppakone.com",
   "contact_email": "info@humppakone.com",
   "dependencies": {
-    "@sentry/browser": "^5.14.2",
+    "@sentry/react": "^5.27.4",
+    "@sentry/tracing": "^5.27.4",
     "gh-pages": "^2.1.1",
     "is-mobile": "^2.1.0",
     "jquery": "^3.4.1",

@@ -686,11 +686,11 @@ class App extends React.PureComponent {
           </div>
           <div className="currentTitle">Now Playing: <span id="currentTitle" title={currentAudio.filename}>{this.getAudioTitle() || '-'}</span></div>
           
-          <p className="searchInputWrapper">
+          <span className="searchInputWrapper">
             <form className="searchForm" onSubmit={this.onSubmitSearchForm}>
               <input type="search" onKeyPress={this.searchInputKeyPress} className="searchInput" placeholder="Search"/>
               <span onClick={this.displayQueue} className="link"><i className="fas fa-layer-group"></i></span></form>
-          </p>
+          </span>
           { viewQueue ? 
           (
             <div className="queueList">

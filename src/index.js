@@ -3,9 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/react';
+import { Integrations } from "@sentry/tracing";
 
-Sentry.init({ dsn: 'https://b31de5237b044454b3b61080061d6abd@sentry.io/273693' });
+Sentry.init({ 
+  dsn: 'https://b31de5237b044454b3b61080061d6abd@o91052.ingest.sentry.io/273693',
+  integrations: [
+    new Integrations.BrowserTracing(),
+  ],
+  tracesSampleRate: 0.1,
+});
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
