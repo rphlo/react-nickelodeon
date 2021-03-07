@@ -3,7 +3,7 @@ import React from "react";
 
 export default class QueueItem extends React.PureComponent {
   render() {
-    const { audio, username, queueIndex } = this.props;
+    const { audio, username, queueIndex, isSuperuser } = this.props;
 
     return (
     <div className="queueItem" >
@@ -18,7 +18,7 @@ export default class QueueItem extends React.PureComponent {
           (<div class="queueNumber">{(queueIndex+1).toString()}</div>)}
       </span>
       <span className="link" title={audio.filename} onClick={()=>this.props.onRandomAudioLoaded(audio)}>{ audio.filename.split('/').pop() }</span>
-      { (username === audio.owner) && <span className="searchResultActions">
+      { (username === audio.owner || isSuperuser) && <span className="searchResultActions">
         <span
           className="link"
           onClick={()=>this.props.editAudioFilename(audio)} >

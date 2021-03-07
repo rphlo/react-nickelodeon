@@ -3,7 +3,7 @@ import React from "react";
 
 export default class SearchResultItem extends React.PureComponent {
   render() {
-    const { audio, queue, username } = this.props;
+    const { audio, queue, username, isSuperuser } = this.props;
     const queueIndex = queue.findIndex(el => el.id === audio.id);
 
     return (
@@ -20,7 +20,7 @@ export default class SearchResultItem extends React.PureComponent {
           (<div class="queueNumber">{(queueIndex+1).toString()}</div>)}
       </span>
       <span className="link" title={audio.filename} onClick={()=>this.props.onRandomAudioLoaded(audio)}>{ audio.filename.split('/').pop() }</span>
-      { (username === audio.owner) && <span className="searchResultActions">
+      { (username === audio.owner || isSuperuser) && <span className="searchResultActions">
         <span
           className="link"
           onClick={()=>this.props.editAudioFilename(audio)} >
