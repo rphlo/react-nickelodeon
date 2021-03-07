@@ -5,6 +5,7 @@ import useNoSleep from "use-no-sleep";
 import { printTime } from "./utils";
 import SearchResultItem from "./components/searchResultItem";
 import QueueItem from "./components/queueItem";
+import { useSnackbar } from 'notistack';
 
 const pkg = require('../package.json');
 
@@ -40,6 +41,7 @@ class App extends React.PureComponent {
     searchTimeout: null,
     xhrSearch: null,
     viewQueue: false,
+    youtubeDL: {},
   };
 
   constructor() {
@@ -200,12 +202,40 @@ class App extends React.PureComponent {
           }
         }
       )
-      .done(response => console.log('task id: ' + response.task_id))
+      .done(response => this.onStartYouTubeDL(videoId, response.task_id))
       .fail(e => this.onYoutubeFail(e, videoId));
     } else {
       swal('Error', 'Invalid Youtube URL', 'error');
     }   
   }
+  
+  onStartYouTubeDL = (videoId, taskId) => {
+    this.props.snackbarMessage('Youtube video "' + videoId + '" download started...');
+    const list = this.state.youtubeDL;
+    list[videoId] = { taskId, done: false};
+    this.setState({youtubeDL: list});
+
+    (function fetchStatus (t) {
+      $.ajax({
+        url: t.state.params.apiRoot + '/tasks/' + taskId,
+        type: 'GET',
+        headers: {
+          Authorization: 'Token ' + t.state.params.authToken
+        }
+      }).done(response => {
+        if(!response.pk) {
+          if (response.error) {
+            t.props.snackbarMessage('Youtube video "' + videoId + '" download failed', {variant: 'error'});
+          } else {
+            setTimeout(((tt) => (() => fetchStatus(tt)))(t), 1000);
+          }
+        } else {
+          t.props.snackbarMessage('Youtube video "' + videoId + '" download complete', {variant: 'success'});
+        }
+      });
+    })(this);
+  }
+
   onYoutubeFail = (e, videoId) => {
     if (e.status === 401) {
       this.clearAuthToken();
@@ -750,9 +780,10 @@ class App extends React.PureComponent {
 function MyApp() {
   const [playing, setPlaying] = React.useState(false);
   useNoSleep(playing);
+  const {enqueueSnackbar} = useSnackbar();
 
   return (
-    <App onTogglePause={(paused) => {console.log('noSleep ' + (!paused ? 'on' : 'off'));setPlaying(!paused)}}/>
+    <App snackbarMessage={(msg, opts = {}) => enqueueSnackbar(msg, opts) } onTogglePause={(paused) => {console.log('noSleep ' + (!paused ? 'on' : 'off'));setPlaying(!paused)}}/>
   );
 };
 

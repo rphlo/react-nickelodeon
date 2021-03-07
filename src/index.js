@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import * as Sentry from '@sentry/react';
 import { Integrations } from "@sentry/tracing";
+import { SnackbarProvider } from 'notistack';
 
 Sentry.init({ 
   dsn: 'https://b31de5237b044454b3b61080061d6abd@o91052.ingest.sentry.io/273693',
@@ -14,7 +15,7 @@ Sentry.init({
   tracesSampleRate: 0.1,
 });
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<SnackbarProvider maxSnack={5}><App /></SnackbarProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
