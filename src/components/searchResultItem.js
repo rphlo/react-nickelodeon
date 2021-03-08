@@ -1,5 +1,6 @@
 
 import React from "react";
+import Tooltip from '@material-ui/core/Tooltip';
 
 export default class SearchResultItem extends React.PureComponent {
   render() {
@@ -19,7 +20,9 @@ export default class SearchResultItem extends React.PureComponent {
         { (queueIndex !== -1) && 
           (<div class="queueNumber">{(queueIndex+1).toString()}</div>)}
       </span>
-      <span className="link" title={audio.filename} onClick={()=>this.props.onRandomAudioLoaded(audio)}>{ audio.filename.split('/').pop() }</span>
+      <Tooltip arrow placement="bottom" title={audio.filename}>
+        <span className="link" onClick={()=>this.props.onRandomAudioLoaded(audio)}>{ audio.filename.split('/').pop() }</span>
+      </Tooltip>
       { (username === audio.owner || isSuperuser) && <span className="searchResultActions">
         <span
           className="link"

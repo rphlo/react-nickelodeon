@@ -6,6 +6,7 @@ import { printTime } from "./utils";
 import SearchResultItem from "./components/searchResultItem";
 import QueueItem from "./components/queueItem";
 import { useSnackbar } from 'notistack';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const pkg = require('../package.json');
 
@@ -626,17 +627,18 @@ class App extends React.PureComponent {
     return (
       <div>
         { authToken &&
-         <div
-          className="progressbar"
-          onClick={this.onClickProgressBar}
-          ref={node => (this.progressBar = node)}
-          title={this.getProgressText()}
-          >
-          <div
-           className="progressbarBar"
-           style={{width: (this.getProgressPercentage() + '%')}}
-          ></div>
-        </div>}
+         <Tooltip arrow placement="bottom" title={this.getProgressText()}>
+           <div
+            className="progressbar"
+            onClick={this.onClickProgressBar}
+            ref={node => (this.progressBar = node)}
+            >
+            <div
+            className="progressbarBar"
+            style={{width: (this.getProgressPercentage() + '%')}}
+            ></div>
+          </div>
+        </Tooltip>}
         { authToken && !currentAudio &&
           <div id="loading">
             <i className="fas fa-spinner fa-spin"></i> Loading
@@ -676,27 +678,32 @@ class App extends React.PureComponent {
                 alt=""
               />
             </span>
+            <Tooltip arrow placement="bottom" title="Play/Pause">
             <span
               className="playPauseButton link"
               onClick={this.onTogglePlay}
-              title="Play/Pause">
+            >
               <i className={pause ? "fas fa-fw fa-play" : "fas fa-fw fa-pause"}></i>
             </span>
+            </Tooltip>
+            <Tooltip arrow placement="bottom" title="Next">
             <span
-              onClick={this.playNext} 
-              title="Next"
+              onClick={this.playNext}
               className="link">
               <i className="fas fa-fw fa-forward"></i>
             </span>
+            </Tooltip>
+            <Tooltip arrow placement="bottom" title="Import From Youtube">
             <span
-              onClick={this.onYoutubeDlPrompt} 
-              title="Import From Youtube"
+              onClick={this.onYoutubeDlPrompt}
               className="link youtube">
               <i className="fab fa-fw fa-youtube"></i>
             </span>
+
+            </Tooltip>
+            <Tooltip arrow placement="bottom" title="Download">
             <span
               onClick={() => this.onAudioDownload(currentAudio)} 
-              title="Download"
               className="link">
               <a
                 href={this.getAudioSrc()}
@@ -705,18 +712,21 @@ class App extends React.PureComponent {
                 <i className="fas fa-fw fa-cloud-download-alt"></i>
               </a>
             </span>
-            <span
-              onClick={() => this.onMP3Upload(currentAudio)} 
-              title="MP3 Upload"
-              className="link">
-             <i className="fas fa-fw fa-upload"></i>
-            </span>
-            <span
-              onClick={this.onLogout}
-              title="Sign out"
-              className="logoutBtn link">
-                <i className="fas fa-fw fa-sign-out-alt"></i>
-            </span>
+            </Tooltip>
+            <Tooltip arrow placement="bottom" title="MP3 Upload">
+              <span
+                onClick={() => this.onMP3Upload(currentAudio)} 
+                className="link">
+              <i className="fas fa-fw fa-upload"></i>
+              </span>
+            </Tooltip>
+            <Tooltip arrow placement="bottom" title="Sign out">
+              <span
+                onClick={this.onLogout}
+                className="logoutBtn link">
+                  <i className="fas fa-fw fa-sign-out-alt"></i>
+              </span>
+            </Tooltip>
           </div>
           <div className="currentTitle">Now Playing: <span id="currentTitle" title={currentAudio.filename}>{this.getAudioTitle() || '-'}</span></div>
           
