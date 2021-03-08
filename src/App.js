@@ -230,7 +230,8 @@ class App extends React.PureComponent {
             setTimeout(((tt) => (() => fetchStatus(tt)))(t), 1000);
           }
         } else {
-          t.props.snackbarMessage('Youtube video "' + videoId + '" download complete', {variant: 'success'});
+          const name = response.filename.split('/').pop();
+          t.props.snackbarMessage('Song "' + name + '" ready', {variant: 'success'});
         }
       });
     })(this);
