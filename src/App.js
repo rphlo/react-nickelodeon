@@ -15,7 +15,7 @@ const options = {
   apiRoot: localStorage.devserver || pkg.api_homepage,
   authToken: localStorage.getItem('auth_token'),
   username: localStorage.getItem('username'),
-  is_superuser: localStorage.getItem('is_superuser'),
+  isSuperuser: localStorage.getItem('is_superuser'),
 };
 
 class App extends React.PureComponent {
