@@ -54,5 +54,8 @@ export function formatTime(second) {
     var h = Math.floor(t / 3600),
         m = Math.floor((t % 3600) / 60),
         s = t % 60;
+    if (h === 0) {
+      return [prependZero(m), prependZero(s)].join(':')
+    }
     return [prependZero(h), prependZero(m), prependZero(s)].join(':');
   };

@@ -773,7 +773,7 @@ class App extends React.PureComponent {
         </div>
         }
         <div className="version">
-          <small>{' v' + pkg.version}</small>
+          <small>{this.audio?.duration ? this.getProgressText() : ('v' + pkg.version)}</small>
         </div>
         <audio
           key="audio"
