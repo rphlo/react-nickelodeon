@@ -728,7 +728,7 @@ class App extends React.PureComponent {
               </span>
             </Tooltip>
           </div>
-          <div className="currentTitle">Now Playing: <span id="currentTitle" title={currentAudio.filename}>{this.getAudioTitle() || '-'}</span></div>
+          <div className="currentTitle">Now Playing: <Tooltip arrow placement="bottom" title={currentAudio.filename}><span id="currentTitle">{this.getAudioTitle() || '-'}</span></Tooltip></div>
           
           <span className="searchInputWrapper">
             <form className="searchForm" onSubmit={this.onSubmitSearchForm}>
