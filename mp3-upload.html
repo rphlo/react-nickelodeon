@@ -50,6 +50,12 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     r.on('fileSuccess', function(file){
     })
+    window.onbeforeunload = function() {
+        if(filesUploaded.find(function(f) {return f.progress() < 1})) {
+            return "Some upload are still in progress...";
+        }
+        return null
+    }
 });
         </script>
     </body>
